@@ -7,7 +7,7 @@ public class Player2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<Rigidbody>().freezeRotation = true;
     }
 
     // Update is called once per frame
