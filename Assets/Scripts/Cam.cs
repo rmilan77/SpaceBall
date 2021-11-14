@@ -8,31 +8,36 @@ public class Cam : MonoBehaviour
 {
     private const float fX = 7.58f;
     private const float fY = 2.134f;    
-    private const float fZ = -12.97f;
-    
-    private float x = 7f;
-    private float y = 2;
-    private float z = -120f;
+    private const float fZ = -12.97f;        
+
+    private const float frX = 0f;
+    private const float frY = -3.2f;
+    private const float frZ = -0f;    
 
     public Transform target;
-    public float smoothTime = 0.9F;
+    public float smoothTime = 0.5F;
     private Vector3 velocity = Vector3.zero;
 
+    float smooth = 0.5f;    
 
     // Start is called before the first frame update
     void Start()
     {
-        target = GetComponent<Transform>();
-        target.SetPositionAndRotation(new Vector3(x, y, z), target.rotation);
+        
     }
 
     void Update()
-    {
-        // Define a target position above and behind the target transform
-        Vector3 targetPosition = new Vector3(fX, fY, fZ);
+    {   
+        Vector3 targetPosition = new Vector3(fX, fY, fZ);        
+        Vector3 targetR = new Vector3(frX, frY, frZ);
 
-        // Smoothly move the camera towards that target position
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);        
+
+        // Rotate the cube by converting the angles into a quaternion.
+        Quaternion targetRotation = Quaternion.Euler(targetR);
+
+        // Dampen towards the target rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smooth);
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

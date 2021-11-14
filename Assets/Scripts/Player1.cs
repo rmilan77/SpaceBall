@@ -17,20 +17,20 @@ public class Player1 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) && rb.position.y < 0.2)
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * Global.jumpVelocity, ForceMode.VelocityChange);
+            rb.AddForce(Vector3.up * Global.jumpVelocity, ForceMode.VelocityChange);
         }
-
         if (Input.GetKey(KeyCode.D))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.right * Global.moveVelocity, ForceMode.Force);
+            rb.AddForce(Vector3.right * Global.moveVelocity, ForceMode.Force);
         }
-
         if (Input.GetKey(KeyCode.A))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.left * Global.moveVelocity, ForceMode.Force);
+            rb.AddForce(Vector3.left * Global.moveVelocity, ForceMode.Force);
         }
 
-
-        
+        if (Input.GetKey(KeyCode.S))
+        {
+            rb.AddForce(Vector3.down, ForceMode.VelocityChange);
+        }
     }
 }

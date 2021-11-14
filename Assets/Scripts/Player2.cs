@@ -17,17 +17,24 @@ public class Player2 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && rb.position.y < 0.2)
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * Global.jumpVelocity, ForceMode.VelocityChange);
+            rb.AddForce(Vector3.up * Global.jumpVelocity, ForceMode.VelocityChange);
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.right * Global.moveVelocity, ForceMode.Force);
+            rb.AddForce(Vector3.right * Global.moveVelocity, ForceMode.Force);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.left * Global.moveVelocity, ForceMode.Force);
+            rb.AddForce(Vector3.left * Global.moveVelocity, ForceMode.Force);
         }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            rb.AddForce(Vector3.down, ForceMode.VelocityChange);
+        }       
+
+
     }
 }
