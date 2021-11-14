@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
-{   
+{
+    public static Vector3 startPosition;
+    
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Rigidbody>().Sleep();
+        Physics.IgnoreCollision(GameObject.Find("NetFull").GetComponent<Collider>(), GetComponent<Collider>());
+        startPosition = transform.position;
+        
 
-        Physics.IgnoreCollision(GameObject.Find("NetFull").GetComponent<Collider>(), GetComponent<Collider>());        
     }
 
     // Update is called once per frame
@@ -23,6 +27,7 @@ public class Ball : MonoBehaviour
         if (other.gameObject.tag == "Baller")
         {
             GetComponent<AudioSource>().Play();
+            GetComponent<Rigidbody>().useGravity = true;
         }
         else if(other.gameObject.tag == "Finish")
         {
@@ -36,6 +41,8 @@ public class Ball : MonoBehaviour
                 Player1.Score += 1;
             }
             Global.DrawScore();
+            Global.ResetScenePosition();
+            
         }
     }
 

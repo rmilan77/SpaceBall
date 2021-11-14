@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
+    public static Vector3 startPosition;
     public static int Score = 0;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Rigidbody>().freezeRotation = true;
+        startPosition = transform.position;
     }
 
     // Update is called once per frame

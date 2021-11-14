@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,5 +26,19 @@ public class Global : MonoBehaviour
     void Update()
     {
         
+    }
+
+    internal static void ResetScenePosition()
+    {
+        var p1 = GameObject.Find("Player1");
+        p1.transform.position = Player1.startPosition;
+
+        var p2 = GameObject.Find("Player2");
+        p2.transform.position = Player2.startPosition;
+
+        var ball = GameObject.Find("Ball");
+        ball.transform.position = Ball.startPosition;
+        ball.GetComponent<Rigidbody>().Sleep();
+        ball.GetComponent<Rigidbody>().useGravity = false;
     }
 }
