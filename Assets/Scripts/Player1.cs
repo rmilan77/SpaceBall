@@ -25,11 +25,13 @@ public class Player1 : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(Vector3.right * Global.moveVelocity, ForceMode.Force);
+            rb.AddForce(Vector3.right * Global.moveForce, ForceMode.Force);
+            // rb.AddForce(Vector3.right * Global.moveVelocity, ForceMode.VelocityChange);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(Vector3.left * Global.moveVelocity, ForceMode.Force);
+            rb.AddForce(Vector3.left * Global.moveForce, ForceMode.Force);
+            // rb.AddForce(Vector3.left * Global.moveVelocity, ForceMode.VelocityChange);
         }
         if (Input.GetKey(KeyCode.S))
         {

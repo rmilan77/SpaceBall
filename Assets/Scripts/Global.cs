@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class Global : MonoBehaviour
 {
     public const float jumpVelocity = 8;
-    public const float moveVelocity = 12;
+    public const float moveForce = 16;
+    public const float moveVelocity = 0.5f;
 
     public static void DrawScore()
     {
@@ -28,7 +29,7 @@ public class Global : MonoBehaviour
         
     }
 
-    internal static void ResetScenePosition()
+    internal static void ResetScenePosition(int winner)
     {
         var p1 = GameObject.Find("Player1");
         p1.transform.position = Player1.startPosition;
@@ -40,5 +41,11 @@ public class Global : MonoBehaviour
         ball.transform.position = Ball.startPosition;
         ball.GetComponent<Rigidbody>().Sleep();
         ball.GetComponent<Rigidbody>().useGravity = false;
+
+        if (winner == 2)
+        {
+            Vector3 v = ball.transform.position;
+            ball.transform.SetPositionAndRotation(new Vector3(p1.transform.position.x + 0.6f, v.y, v.z), ball.transform.rotation);
+        }
     }
 }

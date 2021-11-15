@@ -25,12 +25,14 @@ public class Player2 : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            rb.AddForce(Vector3.right * Global.moveVelocity, ForceMode.Force);
+            rb.AddForce(Vector3.right * Global.moveForce, ForceMode.Force);
+            //rb.AddForce(Vector3.right * Global.moveVelocity, ForceMode.VelocityChange);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rb.AddForce(Vector3.left * Global.moveVelocity, ForceMode.Force);
+            rb.AddForce(Vector3.left * Global.moveForce, ForceMode.Force);
+            //rb.AddForce(Vector3.left * Global.moveVelocity, ForceMode.VelocityChange);
         }
 
         if (Input.GetKey(KeyCode.DownArrow))

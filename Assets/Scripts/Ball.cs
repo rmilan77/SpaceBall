@@ -32,16 +32,21 @@ public class Ball : MonoBehaviour
         else if(other.gameObject.tag == "Finish")
         {
             var x = other.contacts[0].point.x;
+            int winner = -1;
             if (x < GameObject.Find("Net").GetComponent<Transform>().position.x)
             {
                 Player2.Score += 1;
+                winner = 2;
             }
             else
             {
                 Player1.Score += 1;
+                winner = 1;
             }
             Global.DrawScore();
-            Global.ResetScenePosition();
+            Global.ResetScenePosition(winner);
+
+
             
         }
     }
